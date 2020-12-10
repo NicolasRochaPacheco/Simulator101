@@ -54,13 +54,13 @@ class Instruction(object):
 		self.imm = self.__get_immediate(binary, self.ins_format)
 
 		# Sets the funct3 and funct7 attributes
-		self.funct3, self.funct7 = __get_funct(binary, self.ins_format)
+		self.funct3, self.funct7 = self.__get_funct(binary, self.ins_format)
 
 		# Sets the execution unit selection
 		self.execution_unit = OPCODE_EXEC_UNIT_DICT[int(binary[32-7:32], 2)]
 
 		# Sets the execution unit uOP
-		self.uop = __get_uop()
+		self.uop = self.__get_uop(self.funct3, self.funct7, int(binary[32-7::], 2))
 
 
 	def __get_registers(self, binary, ins_format):
