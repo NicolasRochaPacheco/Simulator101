@@ -92,5 +92,5 @@ class HEXProcessing:
 			instruction = Instruction(bin_instruction)
 		
 			# Adds instruction to dictionary
-			self.instructions[address].append(bin_instruction)
+			self.instructions[address].append(instruction)
 		
